@@ -84,6 +84,9 @@ One extra library is also used:
 - `app/config.py`: configuration loaded from environment variables.
 - `app/rag_pipeline.py`: the full RAG lifecycle in one place.
 - `app/schemas.py`: request and response models.
+- `templates/index.html`: single-page teaching UI.
+- `static/styles.css`: minimal styling for the UI.
+- `static/app.js`: browser logic that calls the existing API routes.
 - `sample_docs/`: sample files you can index immediately.
 - `docker-compose.yml`: starts Qdrant locally.
 - `requirements.txt`: Python dependencies.
@@ -504,6 +507,7 @@ uvicorn app.main:app --reload
 ```
 
 The API will be available at [http://localhost:8000](http://localhost:8000).
+The teaching UI will be available at [http://localhost:8000](http://localhost:8000).
 
 ## Example curl commands
 
