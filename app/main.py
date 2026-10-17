@@ -8,8 +8,13 @@ from fastapi.staticfiles import StaticFiles
 
 from app.config import BASE_DIR, get_settings
 from app.rag_pipeline import RAGPipeline
-from app.schemas import AskRequest, AskResponse, HealthResponse, IndexRequest, IndexResponse
-
+from app.schemas import (
+    AskRequest,
+    AskResponse,
+    HealthResponse,
+    IndexRequest,
+    IndexResponse,
+)
 
 settings = get_settings()
 pipeline = RAGPipeline(settings)

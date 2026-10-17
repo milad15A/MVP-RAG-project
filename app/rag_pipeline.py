@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from pathlib import Path
-from typing import Iterable
 from uuid import uuid4
 
-from langchain_core.embeddings import Embeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader, TextLoader
+from langchain_core.embeddings import Embeddings
 from langchain_qdrant import QdrantVectorStore
 from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, PointStruct, VectorParams
@@ -16,7 +16,6 @@ from sentence_transformers import SentenceTransformer
 from transformers import pipeline
 
 from app.config import Settings
-
 
 SUPPORTED_EXTENSIONS = {".txt", ".md", ".pdf"}
 
