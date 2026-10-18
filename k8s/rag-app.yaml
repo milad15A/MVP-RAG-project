@@ -18,6 +18,9 @@ spec:
         - name: rag-app
           image: rag-app:latest
           imagePullPolicy: Never
+          env:
+            - name: QDRANT_URL
+              value: "http://qdrant.platform.svc.cluster.local:6333"
           ports:
             - containerPort: 8000
           resources:
