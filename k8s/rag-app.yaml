@@ -16,13 +16,17 @@ spec:
     spec:
       containers:
         - name: rag-app
-          image: rag-app:latest
-          imagePullPolicy: Never
+          image: reg.entekhabgroup.com/mlops-project/rag-app:latest
+          imagePullPolicy:  Always
           env:
             - name: QDRANT_URL
               value: "http://qdrant.platform.svc.cluster.local:6333"
           ports:
             - containerPort: 8000
+          volumeMounts:
+            - name: sample-docs
+              mountPath: /app/sample_docs
+              readOnly: true
           resources:
             requests:
               cpu: 500m
@@ -34,7 +38,7 @@ spec:
             httpGet:
               path: /health
               port: 8000
-            failureThreshold: 90      # 15 min
+            failureThreshold: 90
             periodSeconds: 10
           readinessProbe:
             httpGet:
@@ -47,6 +51,10 @@ spec:
               port: 8000
             periodSeconds: 10
             failureThreshold: 6
+      volumes:
+        - name: sample-docs
+          configMap:
+            name: rag-sample-docs
 ---
 apiVersion: v1
 kind: Service
